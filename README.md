@@ -1,17 +1,27 @@
 # retail-Sales-Analysis-Using-SQL-PLSQL-Queries-Triggers-Procedures
 complete DBMS project analyzing retail sales data with queries, aggregate functions, triggers, procedures, cursors, and PL/SQL blocks. Includes dataset, scripts
 
+
+
 Project Title: Retail Sales Analysis
 Level: Beginner
 Database: p1_retail_db
 
+
+
+
 This project is designed to demonstrate SQL skills and techniques typically used by data analysts to explore, clean, and analyze retail sales data. The project involves setting up a retail sales database, performing exploratory data analysis (EDA), and answering specific business questions through SQL queries. This project is ideal for those who are starting their journey in data analysis and want to build a solid foundation in SQL.
+
+
+
 
 Objectives
 Set up a retail sales database: Create and populate a retail sales database with the provided sales data.
 Data Cleaning: Identify and remove any records with missing or null values.
 Exploratory Data Analysis (EDA): Perform basic exploratory data analysis to understand the dataset.
 Business Analysis: Use SQL to answer specific business questions and derive insights from the sales data.
+
+
 
 TABLE CREATION
 CREATE TABLE sales_retail
@@ -27,32 +37,49 @@ CREATE TABLE sales_retail
                 cogs number(10),
                 total_sales number(10)
             );
+
+
+            
 INSERT  INTO sales (transaction_id, sale_date, sale_time, customer_id, gender, age, category, quantity, price_per_unit, cogs, total_sales)
 values (522, DATE '2022-07-09', TO_DATE('11:00:00','HH24:MI:SS'), 52, 'Male', 46, 'Beauty', 3, 500, 145, 1500);
+
 INSERT  INTO sales (transaction_id, sale_date, sale_time, customer_id, gender, age, category, quantity, price_per_unit, cogs, total_sales)
 values (559, DATE '2022-12-12', TO_DATE('10:48:00','HH24:MI:SS'), 5, 'Female', 40, 'Clothing', 4, 300, 84, 1200);
+
 INSERT  INTO sales (transaction_id, sale_date, sale_time, customer_id, gender, age, category, quantity, price_per_unit, cogs, total_sales)
 values (1180, DATE '2022-01-06', TO_DATE('08:53:00','HH24:MI:SS'), 85, 'Male', 41, 'Clothing', 3, 300, 129, 900);
+
 iNSERT  INTO sales (transaction_id, sale_date, sale_time, customer_id, gender, age, category, quantity, price_per_unit, cogs, total_sales)
 values(1522, DATE '2022-11-14', TO_DATE('08:35:00','HH24:MI:SS'), 48, 'Male', 46, 'Beauty', 3, 500, 235, 1500);
+
 INSERT  INTO sales (transaction_id, sale_date, sale_time, customer_id, gender, age, category, quantity, price_per_unit, cogs, total_sales)
 VALUES (547, DATE '2022-08-20', TO_DATE('07:40:00','HH24:MI:SS'), 49, 'Female', 40, 'Clothing', 4, 300, 144, 1200);
+
+
 INSERT  INTO sales (transaction_id, sale_date, sale_time, customer_id, gender, age, category, quantity, price_per_unit, cogs, total_sales)
 VALUES (1630, DATE '2022-10-31', TO_DATE('09:38:00','HH24:MI:SS'), 144, 'Female', 64, 'Clothing', 3, 50, 23, 150);
+
 INSERT  INTO sales (transaction_id, sale_date, sale_time, customer_id, gender, age, category, quantity, price_per_unit, cogs, total_sales)
 VALUES (1303, DATE '2022-04-22', TO_DATE('11:09:00','HH24:MI:SS'), 54, 'Male', 19, 'Electronics', 3, 30, 14.7, 90);
+
 INSERT  INTO sales (transaction_id, sale_date, sale_time, customer_id, gender, age, category, quantity, price_per_unit, cogs, total_sales)
 VALUES (1421, DATE '2022-04-08', TO_DATE('08:43:00','HH24:MI:SS'), 66, 'Female', 37, 'Clothing', 3, 500, 235, 1500);
+
 INSERT INTO sales (transaction_id, sale_date, sale_time, customer_id, gender, age, category, quantity, price_per_unit, cogs, total_sales)
 VALUES (2979, DATE '2022-06-18', TO_DATE('10:18:00','HH24:MI:SS'), 6, 'Female', 19, 'Beauty', 1, 25, 10.5, 25);
+
 INSERT  INTO sales (transaction_id, sale_date, sale_time, customer_id, gender, age, category, quantity, price_per_unit, cogs, total_sales)
 VALUES (1163, DATE '2022-05-04', TO_DATE('10:52:00','HH24:MI:SS'), 120, 'Female', 64, 'Clothing', 3, 50, 27, 150);
+
 INSERT  INTO sales (transaction_id, sale_date, sale_time, customer_id, gender, age, category, quantity, price_per_unit, cogs, total_sales)
 VALUES (303, DATE '2022-03-19', TO_DATE('08:59:00','HH24:MI:SS'), 58, 'Male', 19, 'Electronics', 3, 30, 15, 90);
+
 INSERT  INTO sales (transaction_id, sale_date, sale_time, customer_id, gender, age, category, quantity, price_per_unit, cogs, total_sales)
 VALUES (421, DATE '2022-04-08', TO_DATE('08:43:00','HH24:MI:SS'), 66, 'Female', 37, 'Clothing', 3, 500, 235, 1500);
+
 INSERT INTO sales (transaction_id, sale_date, sale_time, customer_id, gender, age, category, quantity, price_per_unit, cogs, total_sales)
 VALUES (979, DATE '2022-05-18', TO_DATE('10:18:00','HH24:MI:SS'), 6, 'Female', 19, 'Beauty', 1, 25, 10.5, 25);
+
 INSERT INTO sales (transaction_id, sale_date, sale_time, customer_id, gender, age, category, quantity, price_per_unit, cogs, total_sales)
 VALUES (1063, DATE '2022-05-04', TO_DATE('10:52:00','HH24:MI:SS'), 120, 'Female', 64, 'Clothing', 3, 50, 27, 150);
 INSERT INTO sales (transaction_id, sale_date, sale_time, customer_id, gender, age, category, quantity, price_per_unit, cogs, total_sales)
