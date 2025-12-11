@@ -146,30 +146,39 @@ from retail_sales
 
 --gender wise total customers
 
-select gender, count(*) as total_customers 
+select gender, count(*)
+as total_customers 
 from retail_sales 
 group by gender;
 
 --min and max age of customers
 
-select min(age) as youngest, max(age) as oldest
- from retail_sales;
+select min(age) as youngest, max(age) 
+as oldest
+from retail_sales;
 
 ----which day has the highest sales
 
-select sale_date,sum(TOTAL_SALE) from retail_sales 
+select sale_date,sum(TOTAL_SALE)
+from retail_sales 
 group by sale_date 
 order by sale_date desc;
 
 ---which category has the highest highest revenue
 
-select category,sum(TOTAL_SALE) as revenue from retail_sales
- group by category order by 
- revenue desc;
+select category,sum(TOTAL_SALE) as revenue
+from retail_sales
+ group by category
+ order by  revenue
+ desc;
 
 --calculate total sales=category * price per unit for each transaction
 
-select transaction_id,quantity,price_per_unit,quantity * price_per_unit as calculated_total_sales
+select
+transaction_id,
+quantity,
+price_per_unit,quantity * price_per_unit 
+as calculated_total_sales
  from retail_sales;
 
 --total revenue generated
@@ -188,7 +197,12 @@ ORDER BY hour_of_day;
 
 ---profit profit = total sale - cogs
 
-select category, sum(TOTAL_SALE-cogs) as profit from retail_sales group by category order by profit desc;
+select category, sum(TOTAL_SALE-cogs)
+as profit
+from retail_sales
+group by category
+order by profit
+desc;
 
 --find customer by age group
 
@@ -227,15 +241,21 @@ FROM retail_sales
 GROUP BY category
 ORDER BY avg_quantity DESC;
 
+
 --add discount to the retail_sales
 
+
  alter table retail_sales add discount_amount number(10,2);
+ 
 
 --drop column discount amount
 
+
 alter table retail_sales drop column discount_amount;
 
+
 --Write a PL/SQL block to print all sales records where total_sale > 1000
+
 
 DECLARE
    -- Cursor to fetch records with total_sale > 1000
@@ -308,6 +328,7 @@ SET SERVEROUTPUT ON;
 
 SELECT * FROM retail_sales WHERE total_sale > 1000;
 
+
 -- Create a procedure update_price that increases price_per_unit by 10% for a given category.
 
 create or replace procedure update_price(p_category in varchar2)
@@ -326,14 +347,17 @@ SELECT category, price_per_unit
 FROM retail_sales
 WHERE category = 'Beauty';
 
+
 BEGIN
    update_price('Beauty');   -- or any category name
 END;
 /
 
+
 select category,price_per_unit 
 from retail_sales
 where category = 'clothing';
+
 
 BEGIN
     update_price('clothing');
@@ -410,12 +434,14 @@ BEGIN
                              ', Quantity: ' || sale_record.quantity);
     END LOOP;
     
+    
     -- Step 6: Close the cursor
     CLOSE electronics_cursor;
 END;
 / 
  
 --write a cursor to display customer IDs and their total purchases.
+
 
 SET SERVEROUTPUT ON;
 
@@ -442,4 +468,4 @@ BEGIN
 END;
 /
 
- 
+  END OF THE PROJECT
