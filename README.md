@@ -97,14 +97,13 @@ VALUES (1979, DATE '2022-08-17', TO_DATE('11:34:00','HH24:MI:SS'), 102, 'Female'
 INSERT INTO sales (transaction_id, sale_date, sale_time, customer_id, gender, age, category, quantity, price_per_unit, cogs, total_sales)
 VALUES (610, DATE '2022-12-18', TO_DATE('06:56:00','HH24:MI:SS'), 137, 'Female', 26, 'Beauty', 2, 300, 93, 600);
 
-SELECT * FROM SALES;
+ SELECT * FROM SALES;
 
-DATA CLEANING
-
----count total transaction 
+count total transaction 
 select count from sales_retail;
 
---data cleaning
+----data cleaning
+
 select * from sales_retail where transaction_id is null;
 or
 sale_date is null
@@ -121,17 +120,17 @@ cogs IS NULL
 OR
 total_sales IS NULL;
 
-1)total revenue sum
+--total revenue sum
 
 SELECT SUM (total_sale)
  FROM retail_sales;
 
-2)highest sale amount
+---highest sale amount
 
 select max(TOTAL_SALE) as highest
  from retail_sales;
 
-3)daily sales by date
+----daily sales by date
 
 select sale_date,sum(TOTAL_SALE) as daily_sales 
 from retail_sales 
@@ -219,7 +218,7 @@ FROM retail_sales
 GROUP BY sale_date
 ORDER BY transaction_count DESC;
 
---CATEGORY WITH HIGHEST AVG QUANTITY
+-- WITH HIGHEST AVG QUANTITCATEGORYY
 
 SELECT 
     category,
@@ -227,11 +226,13 @@ SELECT
 FROM retail_sales
 GROUP BY category
 ORDER BY avg_quantity DESC;
+
 --add discount to the retail_sales
 
  alter table retail_sales add discount_amount number(10,2);
 
 --drop column discount amount
+
 alter table retail_sales drop column discount_amount;
 
 --Write a PL/SQL block to print all sales records where total_sale > 1000
@@ -283,6 +284,7 @@ BEGIN
 END;
 /
 DESC retail_sales;
+
 BEGIN
    FOR rec IN (
       SELECT transaction_id, sale_date, sale_time, customer_id, gender, age, category,
@@ -301,11 +303,13 @@ BEGIN
    END LOOP;
 END;
 /
+
 SET SERVEROUTPUT ON;
 
 SELECT * FROM retail_sales WHERE total_sale > 1000;
 
 -- Create a procedure update_price that increases price_per_unit by 10% for a given category.
+
 create or replace procedure update_price(p_category in varchar2)
 IS
 BEGIN
@@ -337,6 +341,7 @@ end;
 /
 
 --Write a function get_daily_sales(p_date DATE) that returns the total sales for that date.
+
 CREATE OR REPLACE FUNCTION get_daily_sales(p_date IN DATE)
 RETURN NUMBER
 IS
@@ -363,6 +368,7 @@ FROM retail_sales;
 SELECT get_daily_sales(DATE '2022-07-09') FROM retail_sales;
 
 --Write a trigger that prevents insertion of records where total_sale is less than 50.
+
 create or replace trigger trg_check_total_sale 
 before insert  on retail_sales
 for each rowS
@@ -435,3 +441,5 @@ BEGIN
     CLOSE customer_total_cursor;
 END;
 /
+
+ 
