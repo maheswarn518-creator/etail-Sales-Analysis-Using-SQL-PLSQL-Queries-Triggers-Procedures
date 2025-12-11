@@ -24,6 +24,8 @@ Business Analysis: Use SQL to answer specific business questions and derive insi
 
 
 TABLE CREATION
+
+
 CREATE TABLE sales_retail
             ( transaction_id number(10) PRIMARY KEY,	
                 sale_date DATE,	 
@@ -82,15 +84,23 @@ VALUES (979, DATE '2022-05-18', TO_DATE('10:18:00','HH24:MI:SS'), 6, 'Female', 1
 
 INSERT INTO sales (transaction_id, sale_date, sale_time, customer_id, gender, age, category, quantity, price_per_unit, cogs, total_sales)
 VALUES (1063, DATE '2022-05-04', TO_DATE('10:52:00','HH24:MI:SS'), 120, 'Female', 64, 'Clothing', 3, 50, 27, 150);
+
 INSERT INTO sales (transaction_id, sale_date, sale_time, customer_id, gender, age, category, quantity, price_per_unit, cogs, total_sales)
 VALUES (1313, DATE '2022-03-19', TO_DATE('08:59:00','HH24:MI:SS'), 58, 'Male', 19, 'Electronics', 3, 30, 15, 90);
+
 INSERT INTO sales (transaction_id, sale_date, sale_time, customer_id, gender, age, category, quantity, price_per_unit, cogs, total_sales)
 VALUES (1401, DATE '2022-01-17', TO_DATE('07:07:00','HH24:MI:SS'), 59, 'Female', 37, 'Clothing', 3, 500, 185, 1500);
+
 INSERT INTO sales (transaction_id, sale_date, sale_time, customer_id, gender, age, category, quantity, price_per_unit, cogs, total_sales)
 VALUES (1979, DATE '2022-08-17', TO_DATE('11:34:00','HH24:MI:SS'), 102, 'Female', 19, 'Beauty', 1, 25, 7.75, 25);
+
 INSERT INTO sales (transaction_id, sale_date, sale_time, customer_id, gender, age, category, quantity, price_per_unit, cogs, total_sales)
 VALUES (610, DATE '2022-12-18', TO_DATE('06:56:00','HH24:MI:SS'), 137, 'Female', 26, 'Beauty', 2, 300, 93, 600);
+
 SELECT * FROM SALES;
+
+DATA CLEANING
+
 ---count total transaction 
 select count from sales_retail;
 
@@ -111,17 +121,17 @@ cogs IS NULL
 OR
 total_sales IS NULL;
 
---total revenue sum
+1)total revenue sum
 
 SELECT SUM (total_sale)
  FROM retail_sales;
 
----highest sale amount
+2)highest sale amount
 
 select max(TOTAL_SALE) as highest
  from retail_sales;
 
-----daily sales by date
+3)daily sales by date
 
 select sale_date,sum(TOTAL_SALE) as daily_sales 
 from retail_sales 
